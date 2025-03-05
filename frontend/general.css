@@ -1,0 +1,107 @@
+:root {
+    --clr-dark-a0: #000000;
+    --clr-light-a0: #ffffff;
+
+    /** Dark theme primary colors */
+    --clr-primary-a0: #1e2694;
+    --clr-primary-a10: #413ba0;
+    --clr-primary-a20: #5c51ac;
+    --clr-primary-a30: #7468b8;
+    --clr-primary-a40: #8c7fc4;
+    --clr-primary-a50: #a398d0;
+
+    /** Dark theme surface colors */
+    --clr-surface-a0: #050004;
+    --clr-surface-a10: #201e20;
+    --clr-surface-a20: #373537;
+    --clr-surface-a30: #514e50;
+    --clr-surface-a40: #6b696b;
+    --clr-surface-a50: #878586;
+
+    /** Dark theme tonal surface colors */
+    --clr-surface-tonal-a0: #140c22;
+    --clr-surface-tonal-a10: #292437;
+    --clr-surface-tonal-a20: #403b4d;
+    --clr-surface-tonal-a30: #585364;
+    --clr-surface-tonal-a40: #726e7c;
+    --clr-surface-tonal-a50: #8d8995;
+}
+
+body {
+    margin: 0%;
+    padding: 0%;
+
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+body,
+.vortex-activity {
+    color: var(--clr-primary-a50); 
+    background-color: var(--clr-surface-tonal-a0); 
+    justify-content: center;
+    display: flex;
+}
+
+.vortex-activity-dialog {
+    color: var(--clr-surface-a10);
+    margin-top: 120px;
+    width: 640px;
+    height: 400px;
+
+    text-align: left;
+
+    padding-top: 55px;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-bottom: 40px;
+
+    background-color: var(--clr-surface-a10);
+
+    /* --- DEBUG --- */
+    /*
+    border-radius: 1px;
+    border-color: red;
+    border-style: dashed;
+    border-width: 1px;
+    */
+}
+
+.vortex-input {
+    background-color: var(--clr-surface-a20);
+    color: white;
+    
+    border-radius: 1px;
+    border-width: 1px;
+    border-color: var(--clr-surface-a40);
+    border-style: solid;
+
+    padding: 8px;
+}
+
+.vortex-activity-dialog .vortex-input {
+    display: block;
+    margin-bottom: 10px;
+
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.vortex-activity-dialog .vortex-submit {
+    background-color: var(--clr-primary-a0);
+    color: white;
+    
+    border-radius: 1px;
+    border-width: 1px;
+    border-color: var(--clr-primary-a0);
+    border-style: solid;
+    padding: 8px;
+}
+
+.vortex-activity-dialog h1 {
+    color: white;
+}
+
+.vortex-activity-dialog p {
+    color: white;
+    padding-bottom: 20px;
+}
