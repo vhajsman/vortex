@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/vhajsman/vortex/backend/src/api.cpp" "CMakeFiles/vortex-server.dir/src/api.cpp.o" "gcc" "CMakeFiles/vortex-server.dir/src/api.cpp.o.d"
   "/home/vhajsman/vortex/backend/src/main.cpp" "CMakeFiles/vortex-server.dir/src/main.cpp.o" "gcc" "CMakeFiles/vortex-server.dir/src/main.cpp.o.d"
   "/home/vhajsman/vortex/backend/src/mime.cpp" "CMakeFiles/vortex-server.dir/src/mime.cpp.o" "gcc" "CMakeFiles/vortex-server.dir/src/mime.cpp.o.d"
   "/home/vhajsman/vortex/backend/src/server.cpp" "CMakeFiles/vortex-server.dir/src/server.cpp.o" "gcc" "CMakeFiles/vortex-server.dir/src/server.cpp.o.d"

@@ -5,6 +5,7 @@ vortex-server: \
   CMakeFiles/vortex-server.dir/src/main.cpp.o \
   CMakeFiles/vortex-server.dir/src/mime.cpp.o \
   CMakeFiles/vortex-server.dir/src/server.cpp.o \
+  CMakeFiles/vortex-server.dir/src/api.cpp.o \
   /usr/lib/libboost_filesystem.so.1.87.0 \
   /usr/lib/libboost_program_options.so.1.87.0 \
   /usr/lib/libboost_json.so.1.87.0 \
@@ -49,6 +50,8 @@ CMakeFiles/vortex-server.dir/src/main.cpp.o:
 CMakeFiles/vortex-server.dir/src/mime.cpp.o:
 
 CMakeFiles/vortex-server.dir/src/server.cpp.o:
+
+CMakeFiles/vortex-server.dir/src/api.cpp.o:
 
 /usr/lib/libboost_filesystem.so.1.87.0:
 

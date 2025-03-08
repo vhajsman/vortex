@@ -85,12 +85,12 @@ clean: CMakeFiles/vortex-server.dir/clean
 CMakeFiles/vortex-server.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vortex-server.dir/build.make CMakeFiles/vortex-server.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vortex-server.dir/build.make CMakeFiles/vortex-server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/vhajsman/vortex/backend/builddir/CMakeFiles --progress-num=1,2,3,4 "Built target vortex-server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/vhajsman/vortex/backend/builddir/CMakeFiles --progress-num=1,2,3,4,5 "Built target vortex-server"
 .PHONY : CMakeFiles/vortex-server.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/vortex-server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/vhajsman/vortex/backend/builddir/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vhajsman/vortex/backend/builddir/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/vortex-server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/vhajsman/vortex/backend/builddir/CMakeFiles 0
 .PHONY : CMakeFiles/vortex-server.dir/rule
@@ -102,7 +102,7 @@ vortex-server: CMakeFiles/vortex-server.dir/rule
 # codegen rule for target.
 CMakeFiles/vortex-server.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vortex-server.dir/build.make CMakeFiles/vortex-server.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/vhajsman/vortex/backend/builddir/CMakeFiles --progress-num=1,2,3,4 "Finished codegen for target vortex-server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/vhajsman/vortex/backend/builddir/CMakeFiles --progress-num=1,2,3,4,5 "Finished codegen for target vortex-server"
 .PHONY : CMakeFiles/vortex-server.dir/codegen
 
 # clean rule for target.

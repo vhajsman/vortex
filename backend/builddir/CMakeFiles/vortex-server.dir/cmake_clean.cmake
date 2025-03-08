@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/vortex-server.dir/link.d"
+  "CMakeFiles/vortex-server.dir/src/api.cpp.o"
+  "CMakeFiles/vortex-server.dir/src/api.cpp.o.d"
   "CMakeFiles/vortex-server.dir/src/main.cpp.o"
   "CMakeFiles/vortex-server.dir/src/main.cpp.o.d"
   "CMakeFiles/vortex-server.dir/src/mime.cpp.o"
