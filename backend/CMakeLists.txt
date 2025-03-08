@@ -5,7 +5,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(SOURCES
     src/main.cpp
     src/mime.cpp
-    src/server.cpp)
+    src/server.cpp
+    src/api.cpp)
 
 find_package(Boost REQUIRED COMPONENTS system filesystem program_options json)
 add_executable(vortex-server ${SOURCES})

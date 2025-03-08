@@ -5,6 +5,7 @@
 #include <boost/filesystem.hpp>
 #include <fstream>
 #include <string>
+#include <sstream>
 
 int _port;
 std::string storage_path = "userland";
@@ -71,7 +72,23 @@ void Vortex::Server::handleReq(http::request<http::string_body> req, tcp::socket
             filename = std::string(req.target().substr(11));
             filepath = storage_path + "/" + filename;
         } else if(req.target().starts_with("/api/")) {
-            // TODO: Handle API call
+            const std::string function = req.target().substr(5);
+            Vortex::api_call_t call = Vortex::api_call_deserialize(function);
+
+            std::cout << function << std::endl;
+            std::string ret = Vortex::api_handler(call.function, call.args);
+
+            std::stringstream buffer;
+            buffer << ret;
+
+            response.body() = buffer.str();
+
+            if(buffer.str().at(0) == '{' || buffer.str().at(0) == '[') {
+                response.set(http::field::content_type, "application/json");
+            } else {
+                response.set(http::field::content_type, "text/plain");
+            }
+
             return;
         } else {
             filename = std::string(req.target().substr(1));
