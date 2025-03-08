@@ -1,3 +1,0 @@
-/home/vhajsman/vortex/backend/builddir/CMakeFiles/vortex-server.dir
-/home/vhajsman/vortex/backend/builddir/CMakeFiles/edit_cache.dir
-/home/vhajsman/vortex/backend/builddir/CMakeFiles/rebuild_cache.dir
