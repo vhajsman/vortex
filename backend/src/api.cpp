@@ -21,7 +21,7 @@ std::string Vortex::api_call_serialize(Vortex::api_call_t call) {
 
     // Termination sequence (double ';')
     oss << ";";
-    
+
     return oss.str();
 }
 
@@ -86,4 +86,8 @@ std::string Vortex::api_handler(const std::string &identifier, const std::vector
 
     std::cout << "Could not handle API call: " << identifier << " not found." << std::endl;
     return "error:function-not-found";
+}
+
+std::string Vortex::ping_response(const std::vector<Vortex::api_callArgument>& args) {
+    return "echo";
 }

@@ -37,5 +37,6 @@ int main(int argc, char** argv) {
     std::cout << "HTTP server port: " << port << std::endl;
     std::cout << "Vertex 1.0 (backend)" << std::endl;  
 
+    Vortex::api_registerFunction("echo", Vortex::ping_response);
     Vortex::server_run(port);
 }

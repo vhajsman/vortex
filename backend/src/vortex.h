@@ -111,6 +111,8 @@ namespace Vortex {
      * @return The result of the API function execution or an error message if not found.
     */
     std::string api_handler(const std::string& identifier, const std::vector<Vortex::api_callArgument>& args);
+
+    std::string ping_response(const std::vector<Vortex::api_callArgument>& args);
 };
 
 #endif
