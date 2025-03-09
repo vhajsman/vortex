@@ -7,7 +7,7 @@ bool isAdmin = false;
 bool isLoggedIn = false;
 
 bool Vortex::auth_checkCredentials(const std::string &username, const std::string &password) {
-    std::string path_config = "/etc/userconfig.json";
+    std::string path_config = path_userland + "/etc/userconfig.json";
     std::ifstream file(path_config);
 
     if(!file) {
@@ -28,7 +28,7 @@ bool Vortex::auth_checkCredentials(const std::string &username, const std::strin
 }
 
 bool Vortex::auth_isAdmin(const std::string& username) {
-    std::string path_config = "/etc/userconfig.json";
+    std::string path_config = path_userland + "/etc/userconfig.json";
     std::ifstream file(path_config);
 
     if(!file) {
