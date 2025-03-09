@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="./general.css">
     </head>
     <body>
-        <div class="vortex-activity" id="vortex-activity-login">
+        <div class="vortex-activity" id="vortex-activity-login"">
             <div class="vortex-activity-dialog" id="vortex-activity-login-dialog">
                 <h1>Log in</h1>
                 <p>Please log in so you can use Vortex environment</p>
@@ -15,6 +15,14 @@
                 </form>
 
                 <button value="Log in" class="vortex-submit" id="vortex-login-loginbtn">Log in</button>
+                <p style="color: red; display: block;" id="vortex-loging-login-incorrect">Invalid login credentials.</p>
+            </div>
+        </div>
+
+        <div id="vortex-desktop">
+            <div id="vortex-taskbar">
+                <span id="vortex-taskbar-activity"></span>
+                <span id="vortex-taskbar-clock"></span>
             </div>
         </div>
 

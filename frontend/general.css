@@ -25,6 +25,9 @@
     --clr-surface-tonal-a30: #585364;
     --clr-surface-tonal-a40: #726e7c;
     --clr-surface-tonal-a50: #8d8995;
+
+    --wnx-idx-normal-max: 256;
+    --wnx-idx-super-max: calc(var(--wnx-idx-normal-max) + 32);
 }
 
 body {
@@ -104,4 +107,26 @@ body,
 .vortex-activity-dialog p {
     color: white;
     padding-bottom: 20px;
+}
+
+#vortex-desktop {
+    background-color: blue;
+    width: 100%;
+    height: 100%;
+}
+
+#vortex-taskbar {
+    background-color: var(--clr-surface-a10);
+    color: var(--clr-light-a0);
+    
+    z-index: var(--wnx-idx-super-max);
+    justify-content: space-between;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    padding: 12px;
+    font-size: 12px;
+    box-sizing: border-box;
 }

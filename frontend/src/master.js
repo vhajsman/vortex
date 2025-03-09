@@ -1,7 +1,11 @@
+import { vortex_desktop, vortex_taskbar } from "./desktop.js";
 import { vortex_logon } from "./logon.js";
 import { vrotex_ping } from "./ping.js"
 
 console.log(`Vortex server ping: ${await vrotex_ping()} ms`);
+
+document.getElementById("vortex-loging-login-incorrect").style.display = "none";
+vortex_desktop.desktopElement.style.display = "none";
 
 document.getElementById("vortex-login-loginbtn").addEventListener("click", async () => {
     const form = document.getElementById("vortex-form-login-login");
@@ -11,9 +15,13 @@ document.getElementById("vortex-login-loginbtn").addEventListener("click", async
     try {
         const r = await vortex_logon.login(username, password);
         if (r) {
-            alert("Logged in");
+            document.getElementById("vortex-loging-login-incorrect").style.display = "none";
+            document.getElementById("vortex-activity-login").style.display = "none";
+
+            vortex_desktop.main();
+            vortex_taskbar.main();
         } else {
-            alert("Login failed: Invalid credentials");
+            document.getElementById("vortex-loging-login-incorrect").style.display = "block";
         }
     } catch (e) {
         console.error("Login error:", e);
