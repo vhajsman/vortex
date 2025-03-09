@@ -89,6 +89,9 @@ void Vortex::Server::handleReq(http::request<http::string_body> req, tcp::socket
                 response.set(http::field::content_type, "text/plain");
             }
 
+            response.prepare_payload();
+            http::write(sock, response);
+
             return;
         } else {
             filename = std::string(req.target().substr(1));
