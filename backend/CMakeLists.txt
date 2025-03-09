@@ -6,7 +6,8 @@ set(SOURCES
     src/main.cpp
     src/mime.cpp
     src/server.cpp
-    src/api.cpp)
+    src/api.cpp
+    src/api/auth.cpp)
 
 find_package(Boost REQUIRED COMPONENTS system filesystem program_options json)
 add_executable(vortex-server ${SOURCES})

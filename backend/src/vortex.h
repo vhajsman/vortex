@@ -10,6 +10,7 @@
 #include <vector>
 #include <string>
 #include <functional>
+#include <ostream>
 
 namespace json = boost::json;
 namespace po = boost::program_options;
@@ -17,6 +18,9 @@ namespace beast = boost::beast;
 namespace http = beast::http;       
 namespace net = boost::asio;         
 using tcp = boost::asio::ip::tcp;  
+
+extern std::string path_frontend;
+extern std::string path_userland;
 
 std::string getFileType(const std::string& path);
 
@@ -113,6 +117,13 @@ namespace Vortex {
     std::string api_handler(const std::string& identifier, const std::vector<Vortex::api_callArgument>& args);
 
     std::string ping_response(const std::vector<Vortex::api_callArgument>& args);
+
+    bool auth_checkCredentials(const std::string& username, const std::string& password);
+    bool auth_isAdmin(const std::string& username = nullptr);
+    std::string auth_api_login(const std::vector<Vortex::api_callArgument>& args);
+    std::string auth_api_logout(const std::vector<Vortex::api_callArgument>& args);
+    std::string auth_api_whoami(const std::vector<Vortex::api_callArgument>& args);
+    std::string auth_api_amiadmin(const std::vector<Vortex::api_callArgument>& args);
 };
 
 #endif

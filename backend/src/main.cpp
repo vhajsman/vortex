@@ -38,5 +38,11 @@ int main(int argc, char** argv) {
     std::cout << "Vertex 1.0 (backend)" << std::endl;  
 
     Vortex::api_registerFunction("echo", Vortex::ping_response);
+    Vortex::api_registerFunction("auth-login", Vortex::auth_api_login);
+    Vortex::api_registerFunction("auth-logout", Vortex::auth_api_logout);
+    Vortex::api_registerFunction("auth-whoami", Vortex::auth_api_whoami);
+    Vortex::api_registerFunction("auth-amiadmin", Vortex::auth_api_amiadmin);
+
+
     Vortex::server_run(port);
 }
