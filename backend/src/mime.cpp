@@ -11,6 +11,7 @@ std::map<std::string, std::string> mime_types = {
     {".png", "image/png"},
     {".gif", "image/gif"},
     {".txt", "text/plain"},
+    {".svg", "image/svg+xml"}
 };
 
 std::string getFileType(const std::string& path) {
