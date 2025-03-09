@@ -94,7 +94,13 @@ void Vortex::Server::handleReq(http::request<http::string_body> req, tcp::socket
 
             return;
         } else {
-            filename = std::string(req.target().substr(1));
+            std::string target = std::string(req.target());
+            
+            size_t pos = target.find('?');
+            if (pos != std::string::npos)
+                target = target.substr(0, pos);
+
+            filename = target.substr(1);
             if(filename.find("./") == 0)
                 filename.erase(0, 2);
 
