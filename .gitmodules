@@ -1,0 +1,3 @@
+[submodule "frontend/assets/icons"]
+	path = frontend/assets/icons
+	url = https://github.com/twbs/icons.git
