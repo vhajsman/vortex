@@ -28,6 +28,8 @@
 
     --wnx-idx-normal-max: 256;
     --wnx-idx-super-max: calc(var(--wnx-idx-normal-max) + 32);
+
+    --clr-surface-green-a0: #129a1d;
 }
 
 body {
@@ -126,7 +128,45 @@ body,
     bottom: 0;
     left: 0;
 
-    padding: 12px;
+    padding: 6px;
     font-size: 12px;
     box-sizing: border-box;
+}
+
+.vortex-taskbar-object {
+    background-color: var(--clr-surface-a20);
+    padding: 6px;
+    text-align: center;
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+    
+    white-space: nowrap;
+
+    vertical-align: middle;
+    width: 85px;
+}
+
+.red {
+    background-color: #662828;
+}
+
+.yellow {
+    background-color: #666228;
+}
+
+.green {
+    background-color: #346628;
+}
+
+.vortex-taskbar-object img {
+    width: 11px;
+}
+
+#vortex-taskbar-activity {
+    width: 160px
+}
+
+#vortex-taskbar-ping {
+    width: 50px;
 }
