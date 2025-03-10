@@ -83,6 +83,33 @@ export const vortex_wnx = {
 
             this.element.querySelector(".vortex-close-btn").addEventListener("click", () => this.close());
             this.element.addEventListener("mousedown", () => this.toFront());
+
+            this.enableDragging();
+        }
+
+        enableDragging() {
+            let offset_x, offset_y;
+            let isdragging = false;
+
+            const header = this.element.querySelector(".vortex-window-header");
+
+            header.addEventListener("mousedown", (ev) => {
+                isdragging = true;
+
+                offset_x = ev.clientX - this.element.offsetLeft;
+                offset_y = ev.clientY - this.element.offsetTop;
+                
+                this.toFront();
+            });
+
+            document.addEventListener("mousemove", (ev) => {
+                if(isdragging)
+                    this.move(ev.clientX - offset_x, ev.clientY - offset_y);
+            });
+
+            document.addEventListener("mouseup", (ev) => {
+                isdragging = false;
+            });
         }
 
         create(pos_x = 0, pos_y = 0) {
@@ -99,8 +126,8 @@ export const vortex_wnx = {
             this.pos_x = n_pos_x;
             this.pos_y = n_pos_y;
 
-            this.element.style.left = pos_x + "px";
-            this.element.style.top = pos_y + "px";
+            this.element.style.left = this.pos_x + "px";
+            this.element.style.top = this.pos_y + "px";
         }
 
         resize(n_sz_x, n_sz_y) {
