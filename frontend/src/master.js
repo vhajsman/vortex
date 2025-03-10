@@ -1,6 +1,7 @@
 import { vortex_desktop, vortex_taskbar } from "./desktop.js";
 import { vortex_logon } from "./logon.js";
 import { vrotex_ping } from "./ping.js"
+import { vortex_wnx } from "./wnx.js";
 
 console.log(`Vortex server ping: ${await vrotex_ping()} ms`);
 
@@ -39,3 +40,8 @@ if(urlPar.has("f-dbg-nologin")) {
         }
     });
 }
+
+const w = vortex_wnx.window_create("MyWindow", 800, 600);
+w.create(0, 0);
+const ww = vortex_wnx.window_create("MyWindow", 800, 600);
+ww.create(20, 20);

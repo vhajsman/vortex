@@ -34,7 +34,7 @@ export const vortex_taskbar = {
         },
 
         noActivity() {
-            this.setActivity("Nothing opened, nothing to see here you dumb ass nigga")
+            this.setActivity("No activity focused")
         }
     },
 

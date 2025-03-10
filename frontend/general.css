@@ -170,3 +170,48 @@ body,
 #vortex-taskbar-ping {
     width: 50px;
 }
+
+
+.vortex-window {
+    position: absolute;
+    background: var(--clr-surface-a10);
+    border: 1px solid #444;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    color: var(--clr-light-a0);
+}
+
+.vortex-window-header {
+    background: var(--clr-surface-tonal-a0);
+    padding: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+    font-size: 12px;
+}
+
+.vortex-window-body {
+    padding: 10px;
+    background: var(--clr-surface-a10);
+    min-height: 100px;
+}
+
+.vortex-close-btn {
+    background: var(--clr-surface-tonal-a0);
+    border: none;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 4px 8px;
+    margin-left: 20px;
+}
+
+.vortex-close-btn:hover {
+    background: var(--clr-surface-tonal-a10);
+}
+
+.vortex-window.active {
+    border: 2px solid #0096ff;
+    box-shadow: 0px 4px 15px rgba(0, 150, 255, 0.5);
+}
