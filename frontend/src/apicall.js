@@ -63,3 +63,17 @@ export async function vortex_apicall(call) {
         throw e;
     }
 }
+
+export async function vortex_loadfile(path) {
+    try {
+        const response = await fetch(path);
+
+        if(!response.ok)
+            throw new Error(response.statusText);
+
+        return await response.text();
+    } catch(error) {
+        console.error(error);
+        throw error;
+    }
+}
