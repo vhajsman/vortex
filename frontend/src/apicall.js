@@ -64,9 +64,18 @@ export async function vortex_apicall(call) {
     }
 }
 
-export async function vortex_loadfile(path) {
+export async function vortex_loadfile(path, w_no_404 = false) {
     try {
         const response = await fetch(path);
+
+        if(response.status === 404) {
+            if(!w_no_404) {
+                console.error(`File ${path} could not be found [ w_no_404 to ignore ]`);
+                throw new Error(response.statusText);
+            }
+
+            return null;
+        }
 
         if(!response.ok)
             throw new Error(response.statusText);
