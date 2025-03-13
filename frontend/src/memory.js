@@ -185,4 +185,9 @@ export class Vortex_Cache {
 
         this.swap(k, this.queue.length - 1)
     }
+
+    resize(newsz) {
+        this.size = newsz;
+        this.fifo_discard();
+    }
 };
