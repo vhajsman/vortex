@@ -118,7 +118,14 @@ export const Vortex_ConfigManager = {
     },
 
     async getKey(group, key) {
-        const g = this.isLoaded(group) ? this.caches.get(group) : await this.loadConfig(group);
-        return g.get(key);
+    const g = this.isLoaded(group) ? this.caches.get(group) : await this.loadConfig(group);
+    
+    if (g && typeof g.get === 'function') {
+        const value = await g.get(key);
+        return value;
+    } else {
+        console.warn('group is not a valid object with a get method. Probably failed to load somehow.');
     }
+}
+    
 };
