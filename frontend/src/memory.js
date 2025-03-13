@@ -96,3 +96,93 @@ export function vortex_size(reference, utf_size = 16, e_no_function = false, w_n
 
     return bytes;
 }
+
+export class Vortex_Cache {
+    cache;
+    queue;
+    size;
+
+    constructor(size = 0) {
+        if(size === 0)
+            console.warn("No size set for cache memory, setting infinity. This is not always a good idea because of potentional memory leaks.");
+
+        this.cache = new Map();
+        this.queue = [];
+        this.size = size;
+    }
+
+    fifo_discard() {
+        if(this.size > 0 && this.queue.length >= this.size) {
+            const oldest = this.queue.shift();
+            this.cache.delete(oldest);
+        }
+    }
+
+    get(k) {
+        return this.cache.get(k) || null;
+    }
+
+    set(k, v) {
+        if(this.cache.has(k)) {
+            this.cache.set(k, v);
+            return;
+        }
+
+        this.fifo_discard();
+
+        this.cache.set(k, v);
+        this.queue.push(k);
+    }
+
+    discard(k) {
+        const kv = this.get(k);
+
+        this.cache.delete(k);
+        this.queue.filter(kk => kk !== k);
+
+        return kv;
+    }
+
+    has(k) {
+        return this.cache.has(k);
+    }
+
+    clear() {
+        this.cache.clear();
+        this.queue = [];
+    }
+
+    getOccupied() {
+        return this.cache.size;
+    }
+
+    getFree() {
+        return this.size != 0 ? this.size - this.getOccupied() : 0;
+    }
+
+    indexOf(k) {
+        return this.queue.indexOf(k);
+    }
+
+    swap(idx_a, idx_b) {
+        idx_a = typeof(idx_a) == "string" ? this.indexOf(idx_a) : idx_a;
+        idx_b = typeof(idx_b) == "string" ? this.indexOf(idx_b) : idx_b;
+
+        if(idx_a < 0 || idx_b < 0) {
+            console.warn("One or both keys missing.");
+            return -1;
+        }
+
+        [this.queue[idx_a], this.queue[idx_b]] = [this.queue[idx_b], this.queue[idx_a]]
+    }
+
+    extend(k) {
+        if(this.size > 0 && this.queue.length >= this.size)
+            this.fifo_discard();
+
+        if(!this.queue.includes(k))
+            return -1;
+
+        this.swap(k, this.queue.length - 1)
+    }
+};
