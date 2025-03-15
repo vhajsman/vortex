@@ -3,6 +3,7 @@ import { vortex_logon } from "./logon.js";
 import { vortex_scheduler } from "./multitasking/scheduler.js";
 import { vrotex_ping } from "./ping.js"
 import { vortex_wnx } from "./wnx.js";
+import { VThread } from "./multitasking/vthread.js";
 
 console.log(`Vortex server ping: ${await vrotex_ping()} ms`);
 
@@ -47,4 +48,35 @@ w.create(0, 0);
 const ww = vortex_wnx.window_create("MyWindow", 800, 600);
 ww.create(20, 20);
 
-vortex_scheduler.run();
+
+await vortex_scheduler.init();
+
+/*
+const exampleTask1 = async () => {
+    return new Promise(resolve => {
+        setTimeout(() => resolve("Result 1"), 1000);
+    });
+};
+
+const exampleTask2 = async () => {
+    return new Promise(resolve => {
+        setTimeout(() => resolve("Result 2"), 500);
+    });
+};
+
+const exampleTask3 = async () => {
+    return new Promise(resolve => {
+        setTimeout(() => resolve("Result 3"), 1500);
+    });
+};
+
+const thread1 = new VThread(exampleTask1, "Task 1", 1);
+const thread2 = new VThread(exampleTask2, "Task 2", 2);
+const thread3 = new VThread(exampleTask3, "Task 3", 3);
+
+vortex_scheduler.addThread(thread1);
+vortex_scheduler.addThread(thread2);
+vortex_scheduler.addThread(thread3);
+*/
+
+await vortex_scheduler.run();

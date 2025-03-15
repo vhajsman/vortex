@@ -14,7 +14,7 @@ export const vortex_scheduler = {
     T_STATE_FINISHED: 3,
 
     workers: [],
-    numcpu,
+    numcpu: null,
 
     assignProcessId() {
         this.pcount++;
@@ -22,11 +22,14 @@ export const vortex_scheduler = {
     },
 
     addThread(thread) {
+        console.log("Thread added: ", thread);
         this.queue.push(thread);
         this.queue.sort((a, b) => b.priority - a.priority);
     },
 
     async run() {
+        console.log("Scheduler is running");
+    
         while (true) {
             for (let i = 0; i < this.runninglist.length; i++) {
                 const thread = this.runninglist[i];
@@ -35,27 +38,17 @@ export const vortex_scheduler = {
                     i--;
                 }
             }
-
-            if (this.runninglist.length < this.maxWorkers && this.queue.length > 0) {
+    
+            if (this.runninglist.length < this.numcpu && this.queue.length > 0) {
                 const thread = this.queue.shift();
                 this.runninglist.push(thread);
-
-                const worker = this.assignWorker();
-
-                try {
-                    const result = await worker.call(thread.taskName, ...thread.args);
-                    thread.state = this.T_STATE_FINISHED;
-                    thread.result = result;
-
-                    console.log(`Thread PID: ${thread.id} finished with result: ${result}`);
-                } catch (error) {
-                    thread.state = this.T_STATE_FINISHED;
-                    thread.error = error.message;
-
-                    console.error(`Thread PID: ${thread.id} failed with error: ${error.message}`);
-                }
+    
+                console.log(`Starting thread with PID: ${thread.id}`);
+                await thread.execute();
+    
+                console.log(`Thread PID: ${thread.id} finished`);
             }
-
+    
             await new Promise(resolve => setTimeout(resolve, 20));
         }
     },
@@ -67,8 +60,8 @@ export const vortex_scheduler = {
         };
     },
 
-    init() {
-        const cpu_threads = Vortex_ConfigManager.getKey("vortex", "hw_numcpu");
+    async init() {
+        let cpu_threads = await Vortex_ConfigManager.getKey("vortex", "hw_numcpu");
         if(cpu_threads == "auto" || cpu_threads == null)
             cpu_threads = navigator.hardwareConcurrency || NUMCPU_DEFAULT;
 

@@ -2,50 +2,38 @@ import { vortex_scheduler } from "./scheduler.js";
 import { Vortex_Worker } from "./worker.js";
 
 export class VThread {
-    filename;
-    state;
-    task;
-    processId;
-    result;
     startTime;
-    completedTime;
-    priority;
-    worker;
+    elapsed;
 
-    constructor(task, filename, priority = 0) {
-        this.filename = filename;
-        this.state = vortex_scheduler.T_STATE_WAITING;
+    constructor(task, taskName, priority) {
         this.task = task;
-        this.processId = vortex_scheduler.assignProcessId();
-        this.result = 0;
-        this.startTime = Date.now();
+        this.taskName = taskName;
         this.priority = priority;
-
-        this.worker = new Vortex_Worker();
+        this.id = vortex_scheduler.assignProcessId();
+        this.state = vortex_scheduler.T_STATE_WAITING;
     }
 
     async execute() {
-        if (this.state !== vortex_scheduler.T_STATE_WAITING) {
-            console.error(`Task not ready. PID: ${this.processId}`);
-            return;
-        }
+        this.state = vortex_scheduler.T_STATE_RUNNING;
+        console.log(`Executing task for PID: ${this.id}`);
+
+        this.startTime = Date.now();
+        let result;
 
         try {
-            this.state = vortex_scheduler.T_STATE_RUNNING;
-
-            console.log(`Executing task for PID: ${this.processId}`);
-            this.result = await this.worker.call(this.task);
-
-            console.log(`Task completed for PID: ${this.processId} with result: ${this.result}`);
+            result = await this.task();
             this.state = vortex_scheduler.T_STATE_FINISHED;
-            this.completedTime = Date.now();
+            this.result = result;
 
-            console.log(`Thread PID: ${this.processId} finished in ${this.completedTime - this.startTime} ms, with exit code: ${this.result}`);
+            // console.log(`Task completed for PID: ${this.id} with result: ${result}`);
         } catch (error) {
             this.state = vortex_scheduler.T_STATE_FINISHED;
-            console.error(`Thread runtime error, PID: ${this.processId} - ${error}`);
-        } finally {
-            this.worker.free();
+            this.error = error.message;
+
+            console.error(`Error in PID ${this.id}: ${error.message}`);
         }
+
+        this.elapsed = Date.now() - this.startTime;
+        console.log(`Task PID: ${this.id} completed in ${this.elapsed} ms with exit code: ${result}`);
     }
-};
+}
