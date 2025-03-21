@@ -31,6 +31,9 @@ if(urlPar.has("f-dbg-nologin")) {
                 document.getElementById("vortex-loging-login-incorrect").style.display = "none";
                 document.getElementById("vortex-activity-login").style.display = "none";
     
+                vortex_scheduler.init();
+                vortex_scheduler.run();
+
                 vortex_desktop.main();
                 vortex_taskbar.main();
             } else {
@@ -42,41 +45,3 @@ if(urlPar.has("f-dbg-nologin")) {
         }
     });
 }
-
-const w = vortex_wnx.window_create("MyWindow", 800, 600);
-w.create(0, 0);
-const ww = vortex_wnx.window_create("MyWindow", 800, 600);
-ww.create(20, 20);
-
-
-await vortex_scheduler.init();
-
-/*
-const exampleTask1 = async () => {
-    return new Promise(resolve => {
-        setTimeout(() => resolve("Result 1"), 1000);
-    });
-};
-
-const exampleTask2 = async () => {
-    return new Promise(resolve => {
-        setTimeout(() => resolve("Result 2"), 500);
-    });
-};
-
-const exampleTask3 = async () => {
-    return new Promise(resolve => {
-        setTimeout(() => resolve("Result 3"), 1500);
-    });
-};
-
-const thread1 = new VThread(exampleTask1, "Task 1", 1);
-const thread2 = new VThread(exampleTask2, "Task 2", 2);
-const thread3 = new VThread(exampleTask3, "Task 3", 3);
-
-vortex_scheduler.addThread(thread1);
-vortex_scheduler.addThread(thread2);
-vortex_scheduler.addThread(thread3);
-*/
-
-await vortex_scheduler.run();
